@@ -8,5 +8,21 @@
 
 'use strict';
 
+namespace = require 'node-namespace'
+
+require './adaptor'
+require './driver'
+
 module.exports =
-  hello: -> "Hello, World!"
+  adaptor: (args...) ->
+    new Cylon.Adaptor.LeapMotion(args...)
+
+  driver: (args...) ->
+    new Cylon.Driver.LeapMotion(args...)
+
+  register: (robot) ->
+    Logger.info "Registering Leap Motion adaptor for #{robot.name}"
+    robot.registerAdaptor 'cylon-leapmotion', 'leapmotion'
+
+    Logger.info "Registering Leap Motion driver for #{robot.name}"
+    robot.registerDriver 'cylon-leapmotion', 'leapmotion'

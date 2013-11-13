@@ -32,6 +32,8 @@
     "sinon": "~1.7.3"
   },
   "dependencies": {
-    "node-namespace": "~1.0.0"
+    "node-namespace": "~1.0.0",
+    "leapjs": "~0.3.0-beta1",
+    "cylon": "~0.4.0"
   }
 }

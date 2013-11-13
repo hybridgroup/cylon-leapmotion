@@ -9,9 +9,39 @@
 
 (function() {
   'use strict';
+  var namespace,
+    __slice = [].slice;
+
+  namespace = require('node-namespace');
+
+  require('./adaptor');
+
+  require('./driver');
+
   module.exports = {
-    hello: function() {
-      return "Hello, World!";
+    adaptor: function() {
+      var args;
+      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      return (function(func, args, ctor) {
+        ctor.prototype = func.prototype;
+        var child = new ctor, result = func.apply(child, args);
+        return Object(result) === result ? result : child;
+      })(Cylon.Adaptor.LeapMotion, args, function(){});
+    },
+    driver: function() {
+      var args;
+      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      return (function(func, args, ctor) {
+        ctor.prototype = func.prototype;
+        var child = new ctor, result = func.apply(child, args);
+        return Object(result) === result ? result : child;
+      })(Cylon.Driver.LeapMotion, args, function(){});
+    },
+    register: function(robot) {
+      Logger.info("Registering Leap Motion adaptor for " + robot.name);
+      robot.registerAdaptor('cylon-leapmotion', 'leapmotion');
+      Logger.info("Registering Leap Motion driver for " + robot.name);
+      return robot.registerDriver('cylon-leapmotion', 'leapmotion');
     }
   };
 
