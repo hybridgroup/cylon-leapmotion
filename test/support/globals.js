@@ -15,6 +15,8 @@ global.assert = chai.assert;
 global.AssertionError = chai.AssertionError;
 global.sinon = require('sinon');
 
+require('./helpers')
+
 // can be used by test modules to require production modules,
 // relative to the base path (where the Gruntfile.js also lives)
 global.source = function (src) {
@@ -41,4 +43,4 @@ global.err = function (fn, msg) {
 chai.use(sinonChai);
 
 // if you want a detailed error stack output
-// chai.Assertion.includeStack = true;
+chai.Assertion.includeStack = true;

@@ -1,17 +1,6 @@
 (function() {
   'use strict';
-  var leapmotion, namespace;
-
-  namespace = require('node-namespace');
-
-  namespace('Cylon', function() {
-    return this.Basestar = (function() {
-      function Basestar() {}
-
-      return Basestar;
-
-    })();
-  });
+  var leapmotion;
 
   leapmotion = source("cylon-leapmotion");
 

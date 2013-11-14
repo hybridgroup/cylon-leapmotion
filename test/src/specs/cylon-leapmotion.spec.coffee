@@ -1,12 +1,5 @@
 'use strict';
 
-namespace = require 'node-namespace'
-
-# Needed so that tests don't implode
-namespace 'Cylon', ->
-  class @Basestar
-    constructor: ->
-
 leapmotion = source "cylon-leapmotion"
 
 describe "cylon-leapmotion", ->
