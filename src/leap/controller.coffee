@@ -10,13 +10,18 @@ namespace = require 'node-namespace'
 
 WebSocket = require 'ws'
 
+require './frame'
+
 namespace 'Leap', ->
   class @Controller
-    constructor: ->
-      @leap = new WebSocket 'ws://127.0.0.1:6437'
-      do @setupSocket
+    constructor: (opts = {}) ->
+      opts.initialize ?= true
+      @leap = null
+      do @setupSocket if opts.initialize
 
     setupSocket: ->
+      @leap or= new WebSocket 'ws://127.0.0.1:6437'
+
       # By default, the LeapMotion API (leapd) doesn't send us gesture
       # information for each frame. We're going to ask it to, very politely.
       @leap.onopen = =>
@@ -25,9 +30,9 @@ namespace 'Leap', ->
       # When we receive a message from leapd, we're going to rip it apart into
       # classes and send them to whomever is listening
       @leap.on 'message', (data, flags) =>
-        @parseData JSON.parse(data)
+        @parseFrame JSON.parse(data)
 
-    parseData: (data) ->
-      console.log data
+    parseFrame: (frame) ->
+      new Leap.Frame frame
 
 module.exports = Leap.Controller

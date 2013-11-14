@@ -9,3 +9,5 @@
 namespace = require 'node-namespace'
 
 require './leap/controller'
+
+module.exports = Leap

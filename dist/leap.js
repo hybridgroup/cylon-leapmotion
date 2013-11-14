@@ -14,4 +14,6 @@
 
   require('./leap/controller');
 
+  module.exports = Leap;
+
 }).call(this);
