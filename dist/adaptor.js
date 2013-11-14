@@ -15,13 +15,19 @@
 
   namespace = require('node-namespace');
 
+  require('./leap');
+
   namespace('Cylon.Adaptor', function() {
     return this.LeapMotion = (function(_super) {
       __extends(LeapMotion, _super);
 
       function LeapMotion(opts) {
+        if (opts == null) {
+          opts = {};
+        }
         LeapMotion.__super__.constructor.apply(this, arguments);
         this.connection = opts.connection;
+        this.leap = new Leap.Controller;
         this.name = opts.name;
       }
 

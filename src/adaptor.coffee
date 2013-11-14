@@ -10,9 +10,12 @@
 
 namespace = require 'node-namespace'
 
+require './leap'
+
 namespace 'Cylon.Adaptor', ->
   class @LeapMotion extends Cylon.Basestar
-    constructor: (opts) ->
+    constructor: (opts = {}) ->
       super
       @connection = opts.connection
+      @leap = new Leap.Controller
       @name = opts.name
