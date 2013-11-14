@@ -16,13 +16,13 @@
   namespace = require('node-namespace');
 
   namespace('Cylon.Driver', function() {
-    var _ref;
     return this.LeapMotion = (function(_super) {
       __extends(LeapMotion, _super);
 
-      function LeapMotion() {
-        _ref = LeapMotion.__super__.constructor.apply(this, arguments);
-        return _ref;
+      function LeapMotion(opts) {
+        LeapMotion.__super__.constructor.apply(this, arguments);
+        this.device = opts.device;
+        this.connection = this.device.connection;
       }
 
       return LeapMotion;

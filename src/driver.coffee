@@ -12,3 +12,7 @@ namespace = require 'node-namespace'
 
 namespace 'Cylon.Driver', ->
   class @LeapMotion extends Cylon.Basestar
+    constructor: (opts) ->
+      super
+      @device = opts.device
+      @connection = @device.connection
