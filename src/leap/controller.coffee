@@ -12,8 +12,10 @@ WebSocket = require 'ws'
 
 require './frame'
 
+EventEmitter = require('events').EventEmitter
+
 namespace 'Leap', ->
-  class @Controller
+  class @Controller extends EventEmitter
     constructor: (opts = {}) ->
       opts.initialize ?= true
       @leap = null
@@ -30,9 +32,19 @@ namespace 'Leap', ->
       # When we receive a message from leapd, we're going to rip it apart into
       # classes and send them to whomever is listening
       @leap.on 'message', (data, flags) =>
-        @parseFrame JSON.parse(data)
+        message = JSON.parse data
+        if message.id? and message.timestamp?
+          @parseFrame message
+        else
+          @emit 'error', data
+          data
 
     parseFrame: (frame) ->
-      new Leap.Frame frame
+      frame = new Leap.Frame(frame)
+      @emit 'frame', frame
+      @emit 'hand', hand for hand in frame.hands
+      @emit 'pointable', pointable for pointable in frame.pointables
+      @emit 'gesture', gesture for gesture in frame.gestures
+      frame
 
 module.exports = Leap.Controller

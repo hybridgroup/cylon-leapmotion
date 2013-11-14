@@ -8,7 +8,9 @@
 
 
 (function() {
-  var WebSocket, namespace;
+  var EventEmitter, WebSocket, namespace,
+    __hasProp = {}.hasOwnProperty,
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
   namespace = require('node-namespace');
 
@@ -16,8 +18,12 @@
 
   require('./frame');
 
+  EventEmitter = require('events').EventEmitter;
+
   namespace('Leap', function() {
-    return this.Controller = (function() {
+    return this.Controller = (function(_super) {
+      __extends(Controller, _super);
+
       function Controller(opts) {
         if (opts == null) {
           opts = {};
@@ -40,17 +46,42 @@
           }));
         };
         return this.leap.on('message', function(data, flags) {
-          return _this.parseFrame(JSON.parse(data));
+          var message;
+          message = JSON.parse(data);
+          if ((message.id != null) && (message.timestamp != null)) {
+            return _this.parseFrame(message);
+          } else {
+            _this.emit('error', data);
+            return data;
+          }
         });
       };
 
       Controller.prototype.parseFrame = function(frame) {
-        return new Leap.Frame(frame);
+        var gesture, hand, pointable, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2;
+        frame = new Leap.Frame(frame);
+        this.emit('frame', frame);
+        _ref = frame.hands;
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          hand = _ref[_i];
+          this.emit('hand', hand);
+        }
+        _ref1 = frame.pointables;
+        for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+          pointable = _ref1[_j];
+          this.emit('pointable', pointable);
+        }
+        _ref2 = frame.gestures;
+        for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
+          gesture = _ref2[_k];
+          this.emit('gesture', gesture);
+        }
+        return frame;
       };
 
       return Controller;
 
-    })();
+    })(EventEmitter);
   });
 
   module.exports = Leap.Controller;
