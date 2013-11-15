@@ -33,7 +33,6 @@
       }
 
       LeapMotion.prototype.connect = function(callback) {
-        Logger.info("Connecting to LeapMotion " + this.name);
         this.defineAdaptorEvent({
           eventName: 'frame'
         });
@@ -51,6 +50,10 @@
 
       LeapMotion.prototype.commands = function() {
         return [];
+      };
+
+      LeapMotion.prototype.disconnect = function() {
+        return this.leap.close();
       };
 
       return LeapMotion;

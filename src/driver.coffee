@@ -18,7 +18,7 @@ namespace 'Cylon.Driver', ->
       @connection = @device.connection
 
     start: (callback) ->
-      Logger.info "#{@device.name} started"
+      Logger.info "LeapMotion #{@device.name} starting."
 
       @defineDriverEvent eventName: 'frame'
       @defineDriverEvent eventName: 'hand'
@@ -28,3 +28,6 @@ namespace 'Cylon.Driver', ->
       (callback)(null)
 
     commands: -> []
+
+    stop: ->
+      Logger.debug "LeapMotion #{@device.name} stopping."

@@ -26,7 +26,7 @@
       }
 
       LeapMotion.prototype.start = function(callback) {
-        Logger.info("" + this.device.name + " started");
+        Logger.info("LeapMotion " + this.device.name + " starting.");
         this.defineDriverEvent({
           eventName: 'frame'
         });
@@ -44,6 +44,10 @@
 
       LeapMotion.prototype.commands = function() {
         return [];
+      };
+
+      LeapMotion.prototype.stop = function() {
+        return Logger.debug("LeapMotion " + this.device.name + " stopping.");
       };
 
       return LeapMotion;

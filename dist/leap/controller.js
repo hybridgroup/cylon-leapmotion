@@ -76,6 +76,10 @@
         return frame;
       };
 
+      Controller.prototype.close = function() {
+        return this.leap.terminate();
+      };
+
       return Controller;
 
     })(EventEmitter);

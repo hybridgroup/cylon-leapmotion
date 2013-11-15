@@ -22,8 +22,6 @@ namespace 'Cylon.Adaptor', ->
       @name = opts.name
 
     connect: (callback) ->
-      Logger.info "Connecting to LeapMotion #{@name}"
-
       @defineAdaptorEvent eventName: 'frame'
       @defineAdaptorEvent eventName: 'hand'
       @defineAdaptorEvent eventName: 'pointable'
@@ -32,3 +30,6 @@ namespace 'Cylon.Adaptor', ->
       (callback)(null)
 
     commands: -> []
+
+    disconnect: ->
+      @leap.close()

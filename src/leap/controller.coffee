@@ -44,4 +44,7 @@ namespace 'Leap', ->
       @emit 'gesture', gesture for gesture in frame.gestures
       frame
 
+    close: ->
+      @leap.terminate()
+
 module.exports = Leap.Controller
