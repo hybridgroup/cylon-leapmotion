@@ -12,6 +12,15 @@
           value = data[key];
           this[key] = value;
         }
+        if (this.palmPosition) {
+          this.palmX = this.palmPosition[0];
+        }
+        if (this.palmPosition) {
+          this.palmY = this.palmPosition[2];
+        }
+        if (this.palmPosition) {
+          this.palmZ = this.palmPosition[1];
+        }
       }
 
       Hand.prototype.toString = function() {
