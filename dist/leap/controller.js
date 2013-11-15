@@ -50,9 +50,6 @@
           message = JSON.parse(data);
           if ((message.id != null) && (message.timestamp != null)) {
             return _this.parseFrame(message);
-          } else {
-            _this.emit('error', data);
-            return data;
           }
         });
       };

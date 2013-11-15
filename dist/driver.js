@@ -25,6 +25,27 @@
         this.connection = this.device.connection;
       }
 
+      LeapMotion.prototype.start = function(callback) {
+        Logger.info("" + this.device.name + " started");
+        this.defineDriverEvent({
+          eventName: 'frame'
+        });
+        this.defineDriverEvent({
+          eventName: 'hand'
+        });
+        this.defineDriverEvent({
+          eventName: 'pointable'
+        });
+        this.defineDriverEvent({
+          eventName: 'gesture'
+        });
+        return callback(null);
+      };
+
+      LeapMotion.prototype.commands = function() {
+        return [];
+      };
+
       return LeapMotion;
 
     })(Cylon.Basestar);

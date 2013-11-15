@@ -18,4 +18,17 @@ namespace 'Cylon.Adaptor', ->
       super
       @connection = opts.connection
       @leap = new Leap.Controller
+      @connector = @leap
       @name = opts.name
+
+    connect: (callback) ->
+      Logger.info "Connecting to LeapMotion #{@name}"
+
+      @defineAdaptorEvent eventName: 'frame'
+      @defineAdaptorEvent eventName: 'hand'
+      @defineAdaptorEvent eventName: 'pointable'
+      @defineAdaptorEvent eventName: 'gesture'
+
+      (callback)(null)
+
+    commands: -> []

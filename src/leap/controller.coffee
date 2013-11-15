@@ -35,9 +35,6 @@ namespace 'Leap', ->
         message = JSON.parse data
         if message.id? and message.timestamp?
           @parseFrame message
-        else
-          @emit 'error', data
-          data
 
     parseFrame: (frame) ->
       frame = new Leap.Frame(frame)

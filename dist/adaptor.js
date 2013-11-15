@@ -28,8 +28,30 @@
         LeapMotion.__super__.constructor.apply(this, arguments);
         this.connection = opts.connection;
         this.leap = new Leap.Controller;
+        this.connector = this.leap;
         this.name = opts.name;
       }
+
+      LeapMotion.prototype.connect = function(callback) {
+        Logger.info("Connecting to LeapMotion " + this.name);
+        this.defineAdaptorEvent({
+          eventName: 'frame'
+        });
+        this.defineAdaptorEvent({
+          eventName: 'hand'
+        });
+        this.defineAdaptorEvent({
+          eventName: 'pointable'
+        });
+        this.defineAdaptorEvent({
+          eventName: 'gesture'
+        });
+        return callback(null);
+      };
+
+      LeapMotion.prototype.commands = function() {
+        return [];
+      };
 
       return LeapMotion;
 

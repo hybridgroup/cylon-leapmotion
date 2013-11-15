@@ -16,3 +16,15 @@ namespace 'Cylon.Driver', ->
       super
       @device = opts.device
       @connection = @device.connection
+
+    start: (callback) ->
+      Logger.info "#{@device.name} started"
+
+      @defineDriverEvent eventName: 'frame'
+      @defineDriverEvent eventName: 'hand'
+      @defineDriverEvent eventName: 'pointable'
+      @defineDriverEvent eventName: 'gesture'
+
+      (callback)(null)
+
+    commands: -> []
