@@ -28,6 +28,7 @@ namespace 'Cylon.Adaptor', ->
       @defineAdaptorEvent eventName: 'gesture'
 
       (callback)(null)
+      @connection.emit 'connect'
 
     commands: -> []
 

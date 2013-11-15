@@ -5,6 +5,12 @@ Cylon.robot
   device: { name: 'leapmotion', driver: 'leapmotion' }
 
   work: (my) ->
+    my.leapmotion.on 'connect', ->
+      Logger.info "Connected"
+
+    my.leapmotion.on 'start', ->
+      Logger.info "Started"
+
     events = ["frame", "hand", "pointable", "gesture"]
 
     for event in events

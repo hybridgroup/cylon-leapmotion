@@ -28,6 +28,9 @@
       LeapMotion.prototype.start = function(callback) {
         Logger.info("LeapMotion " + this.device.name + " starting.");
         this.defineDriverEvent({
+          eventName: 'connect'
+        });
+        this.defineDriverEvent({
           eventName: 'frame'
         });
         this.defineDriverEvent({
@@ -39,7 +42,8 @@
         this.defineDriverEvent({
           eventName: 'gesture'
         });
-        return callback(null);
+        callback(null);
+        return this.device.emit('start');
       };
 
       LeapMotion.prototype.commands = function() {

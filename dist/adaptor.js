@@ -45,7 +45,8 @@
         this.defineAdaptorEvent({
           eventName: 'gesture'
         });
-        return callback(null);
+        callback(null);
+        return this.connection.emit('connect');
       };
 
       LeapMotion.prototype.commands = function() {
