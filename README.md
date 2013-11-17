@@ -14,7 +14,7 @@ Install the module via NPM:
 
     npm install cylon-leapmotion
 
-## Example Usage
+## Examples
 
 ```javascript
 var Cylon = require('cylon');
