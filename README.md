@@ -68,7 +68,7 @@ To run the tests, use the `grunt test` command. This wil also compile and lint y
 
 ## Release History
 
-Pending initial release.
+Version 0.1.0 - Initial release
 
 ## License
 
