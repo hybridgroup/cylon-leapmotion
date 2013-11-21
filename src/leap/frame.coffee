@@ -11,23 +11,15 @@ namespace 'Leap', ->
     # Creates a new Frame object, based on passed Frame data from the Leap
     # Motion.
     constructor: (frame) ->
-      [@gestures, @hands, @pointables] = [[], [], []]
-
       @id = frame.id
       @timestamp = frame.timestamp
 
-      @r = frame.r
-      @s = frame.s
-      @t = frame.t
+      [@gestures, @hands, @pointables] = [[], [], []]
 
-      for gesture in frame.gestures
-        @gestures.push new Leap.Gesture(gesture)
+      [@r, @s, @t] = [frame.r, frame.s, frame.t]
 
-      for hand in frame.hands
-        @hands.push new Leap.Hand(hand)
+      @gestures.push new Leap.Gesture(gesture) for gesture in frame.gestures
+      @hands.push new Leap.Hand(hand) for hand in frame.hands
+      @pointables.push new Leap.Pointable(point) for point in frame.pointables
 
-      for pointable in frame.pointables
-        @pointables.push new Leap.Pointable(pointable)
-
-    toString: ->
-      "[Cylon::Leap::Frame id='#{@id}' timestamp='#{@timestamp}']"
+    toString: -> "[Cylon::Leap::Frame id='#{@id}' timestamp='#{@timestamp}']"

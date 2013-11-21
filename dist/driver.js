@@ -25,29 +25,22 @@
         this.connection = this.device.connection;
       }
 
-      LeapMotion.prototype.start = function(callback) {
-        Logger.info("LeapMotion " + this.device.name + " starting.");
-        this.defineDriverEvent({
-          eventName: 'connect'
-        });
-        this.defineDriverEvent({
-          eventName: 'frame'
-        });
-        this.defineDriverEvent({
-          eventName: 'hand'
-        });
-        this.defineDriverEvent({
-          eventName: 'pointable'
-        });
-        this.defineDriverEvent({
-          eventName: 'gesture'
-        });
-        callback(null);
-        return this.device.emit('start');
-      };
-
       LeapMotion.prototype.commands = function() {
         return [];
+      };
+
+      LeapMotion.prototype.start = function(callback) {
+        var event, _i, _len, _ref;
+        Logger.info("LeapMotion " + this.device.name + " starting.");
+        _ref = ['connect', 'frame', 'hand', 'pointable', 'gesture'];
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          event = _ref[_i];
+          this.defineDriverEvent({
+            eventName: event
+          });
+        }
+        callback(null);
+        return this.device.emit('start');
       };
 
       LeapMotion.prototype.stop = function() {

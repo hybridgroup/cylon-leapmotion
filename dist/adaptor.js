@@ -26,31 +26,26 @@
           opts = {};
         }
         LeapMotion.__super__.constructor.apply(this, arguments);
-        this.connection = opts.connection;
-        this.leap = new Leap.Controller;
-        this.connector = this.leap;
         this.name = opts.name;
+        this.connection = opts.connection;
+        this.connector = this.leap = new Leap.Controller;
       }
-
-      LeapMotion.prototype.connect = function(callback) {
-        this.defineAdaptorEvent({
-          eventName: 'frame'
-        });
-        this.defineAdaptorEvent({
-          eventName: 'hand'
-        });
-        this.defineAdaptorEvent({
-          eventName: 'pointable'
-        });
-        this.defineAdaptorEvent({
-          eventName: 'gesture'
-        });
-        callback(null);
-        return this.connection.emit('connect');
-      };
 
       LeapMotion.prototype.commands = function() {
         return [];
+      };
+
+      LeapMotion.prototype.connect = function(callback) {
+        var event, _i, _len, _ref;
+        _ref = ['frame', 'hand', 'pointable', 'gesture'];
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          event = _ref[_i];
+          this.defineAdaptorEvent({
+            eventName: event
+          });
+        }
+        callback(null);
+        return this.connection.emit('connect');
       };
 
       LeapMotion.prototype.disconnect = function() {

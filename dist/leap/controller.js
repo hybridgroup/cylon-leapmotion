@@ -14,9 +14,9 @@
 
   namespace = require('node-namespace');
 
-  WebSocket = require('ws');
-
   require('./frame');
+
+  WebSocket = require('ws');
 
   EventEmitter = require('events').EventEmitter;
 

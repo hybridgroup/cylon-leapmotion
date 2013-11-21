@@ -8,10 +8,9 @@
 
 namespace = require 'node-namespace'
 
-WebSocket = require 'ws'
-
 require './frame'
 
+WebSocket = require 'ws'
 EventEmitter = require('events').EventEmitter
 
 namespace 'Leap', ->
@@ -27,24 +26,24 @@ namespace 'Leap', ->
       # By default, the LeapMotion API (leapd) doesn't send us gesture
       # information for each frame. We're going to ask it to, very politely.
       @leap.onopen = =>
-        @leap.send JSON.stringify({ enableGestures: true })
+        @leap.send JSON.stringify enableGestures: true
 
       # When we receive a message from leapd, we're going to rip it apart into
       # classes and send them to whomever is listening
       @leap.on 'message', (data, flags) =>
         message = JSON.parse data
-        if message.id? and message.timestamp?
-          @parseFrame message
+        @parseFrame message if message.id? and message.timestamp?
 
     parseFrame: (frame) ->
-      frame = new Leap.Frame(frame)
+      frame = new Leap.Frame frame
       @emit 'frame', frame
+
       @emit 'hand', hand for hand in frame.hands
       @emit 'pointable', pointable for pointable in frame.pointables
       @emit 'gesture', gesture for gesture in frame.gestures
+
       frame
 
-    close: ->
-      @leap.terminate()
+    close: -> @leap.terminate()
 
 module.exports = Leap.Controller

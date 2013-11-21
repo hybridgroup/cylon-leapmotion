@@ -16,21 +16,19 @@ namespace 'Cylon.Adaptor', ->
   class @LeapMotion extends Cylon.Basestar
     constructor: (opts = {}) ->
       super
-      @connection = opts.connection
-      @leap = new Leap.Controller
-      @connector = @leap
       @name = opts.name
+      @connection = opts.connection
 
-    connect: (callback) ->
-      @defineAdaptorEvent eventName: 'frame'
-      @defineAdaptorEvent eventName: 'hand'
-      @defineAdaptorEvent eventName: 'pointable'
-      @defineAdaptorEvent eventName: 'gesture'
-
-      (callback)(null)
-      @connection.emit 'connect'
+      @connector = @leap = new Leap.Controller
 
     commands: -> []
 
-    disconnect: ->
-      @leap.close()
+    connect: (callback) ->
+      for event in ['frame', 'hand', 'pointable', 'gesture']
+        @defineAdaptorEvent eventName: event
+
+      (callback)(null)
+
+      @connection.emit 'connect'
+
+    disconnect: -> @leap.close()

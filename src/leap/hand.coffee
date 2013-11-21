@@ -10,5 +10,4 @@ namespace 'Leap', ->
       @palmY = @palmPosition[2] if @palmPosition
       @palmZ = @palmPosition[1] if @palmPosition
 
-    toString: ->
-      "[Cylon::Leap::Hand]"
+    toString: -> "[Cylon::Leap::Hand]"
