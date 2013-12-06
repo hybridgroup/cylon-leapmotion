@@ -16,24 +16,18 @@
   namespace('Leap', function() {
     return this.Hand = (function() {
       function Hand(data) {
-        var key, value;
+        var key, value, _ref;
         for (key in data) {
           value = data[key];
           this[key] = value;
         }
         if (this.palmPosition) {
-          this.palmX = this.palmPosition[0];
-        }
-        if (this.palmPosition) {
-          this.palmY = this.palmPosition[2];
-        }
-        if (this.palmPosition) {
-          this.palmZ = this.palmPosition[1];
+          _ref = this.palmPosition, this.palmX = _ref[0], this.palmY = _ref[1], this.palmZ = _ref[2];
         }
       }
 
       Hand.prototype.toString = function() {
-        return "[Cylon::Leap::Hand]";
+        return "[Cylon::Leap::Hand X='" + this.palmX + "' Y='" + this.palmY + "' Z='" + this.palmZ + "']";
       };
 
       return Hand;
