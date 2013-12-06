@@ -16,4 +16,12 @@ namespace 'Leap', ->
       this[key] = value for key, value of data
       [@palmX, @palmY, @palmZ] = @palmPosition if @palmPosition
 
+      @rotation = {
+        axis: @r[0]
+        angle: @r[1]
+        matrix: @r[2]
+      }
+
+      @translation = @t
+
     toString: -> "[Cylon::Leap::Hand X='#{@palmX}' Y='#{@palmY}' Z='#{@palmZ}']"

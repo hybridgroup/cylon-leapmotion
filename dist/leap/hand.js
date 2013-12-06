@@ -24,6 +24,12 @@
         if (this.palmPosition) {
           _ref = this.palmPosition, this.palmX = _ref[0], this.palmY = _ref[1], this.palmZ = _ref[2];
         }
+        this.rotation = {
+          axis: this.r[0],
+          angle: this.r[1],
+          matrix: this.r[2]
+        };
+        this.translation = this.t;
       }
 
       Hand.prototype.toString = function() {
