@@ -13,6 +13,7 @@ namespace 'Leap', ->
     constructor: (frame) ->
       @id = frame.id
       @timestamp = frame.timestamp
+      @raw = frame
 
       [@gestures, @hands, @pointables] = [[], [], []]
 

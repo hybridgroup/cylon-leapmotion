@@ -16,6 +16,7 @@
         var gesture, hand, point, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2, _ref3, _ref4;
         this.id = frame.id;
         this.timestamp = frame.timestamp;
+        this.raw = frame;
         _ref = [[], [], []], this.gestures = _ref[0], this.hands = _ref[1], this.pointables = _ref[2];
         _ref1 = [frame.r, frame.s, frame.t], this.r = _ref1[0], this.s = _ref1[1], this.t = _ref1[2];
         _ref2 = frame.gestures;
