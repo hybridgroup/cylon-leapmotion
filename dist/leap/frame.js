@@ -27,7 +27,12 @@
         this.timestamp = frame.timestamp;
         this.raw = frame;
         _ref = [[], [], []], this.gestures = _ref[0], this.hands = _ref[1], this.pointables = _ref[2];
-        _ref1 = [frame.r, frame.s, frame.t], this.r = _ref1[0], this.s = _ref1[1], this.t = _ref1[2];
+        this.rotation = {
+          axis: frame.r[0],
+          angle: frame.r[1],
+          matrix: frame.r[2]
+        };
+        _ref1 = [frame.s, frame.t], this.scaleFactor = _ref1[0], this.translation = _ref1[1];
         _ref2 = frame.gestures;
         for (_i = 0, _len = _ref2.length; _i < _len; _i++) {
           gesture = _ref2[_i];

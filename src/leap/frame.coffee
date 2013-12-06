@@ -25,7 +25,13 @@ namespace 'Leap', ->
 
       [@gestures, @hands, @pointables] = [[], [], []]
 
-      [@r, @s, @t] = [frame.r, frame.s, frame.t]
+      @rotation = {
+        axis: frame.r[0]
+        angle: frame.r[1]
+        matrix: frame.r[2]
+      }
+
+      [@scaleFactor, @translation] = [frame.s, frame.t]
 
       @gestures.push new Leap.Gesture(gesture) for gesture in frame.gestures
       @hands.push new Leap.Hand(hand) for hand in frame.hands
