@@ -8,4 +8,4 @@ namespace 'Leap', ->
       this[key] = value for key, value of data
 
     toString: ->
-      "[Cylon::Leap::Pointable]"
+      "[Cylon::Leap::Pointable length='#{@length}' zone='#{@touchZone}']"

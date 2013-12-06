@@ -15,7 +15,7 @@
       }
 
       Pointable.prototype.toString = function() {
-        return "[Cylon::Leap::Pointable]";
+        return "[Cylon::Leap::Pointable length='" + this.length + "' zone='" + this.touchZone + "']";
       };
 
       return Pointable;
