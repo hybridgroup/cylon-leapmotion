@@ -1,5 +1,5 @@
 /*
- * cylon-leapmotion adaptor
+ * cylon-leapmotion driver
  * http://cylonjs.com
  *
  * Copyright (c) 2013 The Hybrid Group

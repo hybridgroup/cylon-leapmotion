@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 leapmotion = source "cylon-leapmotion"
 
