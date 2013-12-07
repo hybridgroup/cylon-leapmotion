@@ -42,6 +42,44 @@
       it("stores the detected pointables in an array", function() {
         return frame.pointables.should.be.a('array');
       });
+      describe('object mappings', function() {
+        var gesture, hand, pointables;
+        hand = frame.hands[0];
+        gesture = frame.gestures[0];
+        pointables = frame.pointables;
+        it('allows accessing the gesture from the hand', function() {
+          return hand.gesture.should.be.eql(gesture);
+        });
+        it('allows accessing the pointables from the hand', function() {
+          return hand.pointables.should.be.an('array');
+        });
+        it('allows accessing the hand from the pointables', function() {
+          var pointer, _i, _len, _ref, _results;
+          _ref = hand.pointables;
+          _results = [];
+          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+            pointer = _ref[_i];
+            _results.push(pointer.hand.should.be.eql(hand));
+          }
+          return _results;
+        });
+        it('allows accessing the gesture from the pointables', function() {
+          var pointer, _i, _len, _ref, _results;
+          _ref = gesture.pointables;
+          _results = [];
+          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+            pointer = _ref[_i];
+            _results.push(pointer.gesture.should.be.eql(gesture));
+          }
+          return _results;
+        });
+        it('allows accessing the pointables from the gesture', function() {
+          return gesture.pointables.should.be.an('array');
+        });
+        return it('allows accessing the hands from the gesture', function() {
+          return gesture.hands[0].should.be.eql(hand);
+        });
+      });
       return it("exposes a toString function", function() {
         return frame.toString.should.be.a('function');
       });

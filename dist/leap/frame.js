@@ -22,7 +22,7 @@
   namespace('Leap', function() {
     return this.Frame = (function() {
       function Frame(frame) {
-        var gesture, hand, point, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2, _ref3, _ref4;
+        var gesture, hand, point, pointable, _i, _j, _k, _l, _len, _len1, _len2, _len3, _len4, _len5, _m, _n, _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7;
         this.id = frame.id;
         this.timestamp = frame.timestamp;
         this.raw = frame;
@@ -47,6 +47,21 @@
         for (_k = 0, _len2 = _ref4.length; _k < _len2; _k++) {
           point = _ref4[_k];
           this.pointables.push(new Leap.Pointable(point));
+        }
+        _ref5 = this.hands;
+        for (_l = 0, _len3 = _ref5.length; _l < _len3; _l++) {
+          hand = _ref5[_l];
+          hand._mapFrameObjects(this);
+        }
+        _ref6 = this.gestures;
+        for (_m = 0, _len4 = _ref6.length; _m < _len4; _m++) {
+          gesture = _ref6[_m];
+          gesture._mapFrameObjects(this);
+        }
+        _ref7 = this.pointables;
+        for (_n = 0, _len5 = _ref7.length; _n < _len5; _n++) {
+          pointable = _ref7[_n];
+          pointable._mapFrameObjects(this);
         }
       }
 

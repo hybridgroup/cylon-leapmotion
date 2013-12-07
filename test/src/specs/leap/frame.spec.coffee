@@ -40,5 +40,30 @@ describe 'Leap', ->
     it "stores the detected pointables in an array", ->
       frame.pointables.should.be.a 'array'
 
+    describe 'object mappings', ->
+      hand = frame.hands[0]
+      gesture = frame.gestures[0]
+      pointables = frame.pointables
+
+      it 'allows accessing the gesture from the hand', ->
+        hand.gesture.should.be.eql gesture
+
+      it 'allows accessing the pointables from the hand', ->
+        hand.pointables.should.be.an 'array'
+
+      it 'allows accessing the hand from the pointables', ->
+        for pointer in hand.pointables
+          pointer.hand.should.be.eql hand
+
+      it 'allows accessing the gesture from the pointables', ->
+        for pointer in gesture.pointables
+          pointer.gesture.should.be.eql gesture
+
+      it 'allows accessing the pointables from the gesture', ->
+        gesture.pointables.should.be.an 'array'
+
+      it 'allows accessing the hands from the gesture', ->
+        gesture.hands[0].should.be.eql hand
+
     it "exposes a toString function", ->
       frame.toString.should.be.a 'function'
