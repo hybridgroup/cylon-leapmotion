@@ -37,4 +37,8 @@ namespace 'Leap', ->
       @hands.push new Leap.Hand(hand) for hand in frame.hands
       @pointables.push new Leap.Pointable(point) for point in frame.pointables
 
+      hand._mapFrameObjects(this) for hand in @hands
+      gesture._mapFrameObjects(this) for gesture in @gestures
+      pointable._mapFrameObjects(this) for pointable in @pointables
+
     toString: -> "[Cylon::Leap::Frame id='#{@id}' timestamp='#{@timestamp}']"
