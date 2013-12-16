@@ -24,4 +24,24 @@ namespace 'Leap', ->
 
       @translation = @t
 
+      @gesture = false
+      @pointables = []
+
     toString: -> "[Cylon::Leap::Hand X='#{@palmX}' Y='#{@palmY}' Z='#{@palmZ}']"
+
+    # "Private": Goes through pointables/gestures in the passed Frame, and maps
+    # matching objects to the Hand.
+    #
+    # frame - parsed Leap Motion frame
+    #
+    # Returns the Hand
+    _mapFrameObjects: (frame) ->
+      for pointable in frame.pointables
+        if pointable.handId is @id
+          @pointables.push pointable
+
+      for gesture in frame.gestures
+        if @id in gesture.handIds
+          @gesture = gesture
+
+      this
