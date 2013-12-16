@@ -10,25 +10,19 @@
 
 namespace = require 'node-namespace'
 
+require './cylon-leapmotion'
 require './leap'
 
-namespace 'Cylon.Adaptor', ->
-  class @LeapMotion extends Cylon.Basestar
+namespace 'Cylon.Adaptors', ->
+  class @LeapMotion extends Cylon.Adaptor
     constructor: (opts = {}) ->
       super
-      @name = opts.name
-      @connection = opts.connection
-
       @connector = @leap = new Leap.Controller
-
-    commands: -> []
 
     connect: (callback) ->
       for event in ['frame', 'hand', 'pointable', 'gesture']
         @defineAdaptorEvent eventName: event
 
-      (callback)(null)
-
-      @connection.emit 'connect'
+      super
 
     disconnect: -> @leap.close()

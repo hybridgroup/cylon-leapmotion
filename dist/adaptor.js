@@ -15,9 +15,11 @@
 
   namespace = require('node-namespace');
 
+  require('./cylon-leapmotion');
+
   require('./leap');
 
-  namespace('Cylon.Adaptor', function() {
+  namespace('Cylon.Adaptors', function() {
     return this.LeapMotion = (function(_super) {
       __extends(LeapMotion, _super);
 
@@ -26,14 +28,8 @@
           opts = {};
         }
         LeapMotion.__super__.constructor.apply(this, arguments);
-        this.name = opts.name;
-        this.connection = opts.connection;
         this.connector = this.leap = new Leap.Controller;
       }
-
-      LeapMotion.prototype.commands = function() {
-        return [];
-      };
 
       LeapMotion.prototype.connect = function(callback) {
         var event, _i, _len, _ref;
@@ -44,8 +40,7 @@
             eventName: event
           });
         }
-        callback(null);
-        return this.connection.emit('connect');
+        return LeapMotion.__super__.connect.apply(this, arguments);
       };
 
       LeapMotion.prototype.disconnect = function() {
@@ -54,7 +49,7 @@
 
       return LeapMotion;
 
-    })(Cylon.Basestar);
+    })(Cylon.Adaptor);
   });
 
 }).call(this);

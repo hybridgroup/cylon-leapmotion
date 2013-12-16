@@ -10,23 +10,14 @@
 
 namespace = require 'node-namespace'
 
-namespace 'Cylon.Driver', ->
-  class @LeapMotion extends Cylon.Basestar
-    constructor: (opts) ->
-      super
-      @device = opts.device
-      @connection = @device.connection
+require './cylon-leapmotion'
 
-    commands: -> []
-
+namespace 'Cylon.Drivers', ->
+  class @LeapMotion extends Cylon.Driver
     start: (callback) ->
       Logger.info "LeapMotion #{@device.name} starting."
 
       for event in ['connect', 'frame', 'hand', 'pointable', 'gesture']
         @defineDriverEvent eventName: event
 
-      (callback)(null)
-
-      @device.emit 'start'
-
-    stop: -> Logger.debug "LeapMotion #{@device.name} stopping."
+      super

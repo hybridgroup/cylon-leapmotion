@@ -14,6 +14,8 @@
 
   namespace = require('node-namespace');
 
+  require('cylon');
+
   require('./adaptor');
 
   require('./driver');
@@ -26,7 +28,7 @@
         ctor.prototype = func.prototype;
         var child = new ctor, result = func.apply(child, args);
         return Object(result) === result ? result : child;
-      })(Cylon.Adaptor.LeapMotion, args, function(){});
+      })(Cylon.Adaptors.LeapMotion, args, function(){});
     },
     driver: function() {
       var args;
@@ -35,7 +37,7 @@
         ctor.prototype = func.prototype;
         var child = new ctor, result = func.apply(child, args);
         return Object(result) === result ? result : child;
-      })(Cylon.Driver.LeapMotion, args, function(){});
+      })(Cylon.Drivers.LeapMotion, args, function(){});
     },
     register: function(robot) {
       Logger.info("Registering Leap Motion adaptor for " + robot.name);
