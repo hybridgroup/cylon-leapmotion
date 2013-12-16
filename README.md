@@ -70,6 +70,8 @@ To run the tests, use the `grunt test` command. This wil also compile and lint y
 
 [![NPM](https://nodei.co/npm/cylon-leapmotion.png?compact=true)](https://nodei.co/npm/cylon-leapmotion/)
 
+Version 0.2.0 - Release for cylon 0.8.0
+
 Version 0.1.0 - Initial release
 
 ## License
