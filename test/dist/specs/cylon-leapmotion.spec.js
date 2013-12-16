@@ -4,7 +4,7 @@
 
   leapmotion = source("cylon-leapmotion");
 
-  describe("cylon-leapmotion", function() {
+  describe("Cylon.Leapmotion", function() {
     it("should be able to register", function() {
       return leapmotion.register.should.be.a('function');
     });

@@ -15,41 +15,34 @@
 
   namespace = require('node-namespace');
 
-  namespace('Cylon.Driver', function() {
+  require('./cylon-leapmotion');
+
+  namespace('Cylon.Drivers', function() {
+    var _ref;
     return this.LeapMotion = (function(_super) {
       __extends(LeapMotion, _super);
 
-      function LeapMotion(opts) {
-        LeapMotion.__super__.constructor.apply(this, arguments);
-        this.device = opts.device;
-        this.connection = this.device.connection;
+      function LeapMotion() {
+        _ref = LeapMotion.__super__.constructor.apply(this, arguments);
+        return _ref;
       }
 
-      LeapMotion.prototype.commands = function() {
-        return [];
-      };
-
       LeapMotion.prototype.start = function(callback) {
-        var event, _i, _len, _ref;
+        var event, _i, _len, _ref1;
         Logger.info("LeapMotion " + this.device.name + " starting.");
-        _ref = ['connect', 'frame', 'hand', 'pointable', 'gesture'];
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          event = _ref[_i];
+        _ref1 = ['connect', 'frame', 'hand', 'pointable', 'gesture'];
+        for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
+          event = _ref1[_i];
           this.defineDriverEvent({
             eventName: event
           });
         }
-        callback(null);
-        return this.device.emit('start');
-      };
-
-      LeapMotion.prototype.stop = function() {
-        return Logger.debug("LeapMotion " + this.device.name + " stopping.");
+        return LeapMotion.__super__.start.apply(this, arguments);
       };
 
       return LeapMotion;
 
-    })(Cylon.Basestar);
+    })(Cylon.Driver);
   });
 
 }).call(this);

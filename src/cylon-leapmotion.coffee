@@ -10,15 +10,16 @@
 
 namespace = require 'node-namespace'
 
+require 'cylon'
 require './adaptor'
 require './driver'
 
 module.exports =
   adaptor: (args...) ->
-    new Cylon.Adaptor.LeapMotion(args...)
+    new Cylon.Adaptors.LeapMotion(args...)
 
   driver: (args...) ->
-    new Cylon.Driver.LeapMotion(args...)
+    new Cylon.Drivers.LeapMotion(args...)
 
   register: (robot) ->
     Logger.info "Registering Leap Motion adaptor for #{robot.name}"

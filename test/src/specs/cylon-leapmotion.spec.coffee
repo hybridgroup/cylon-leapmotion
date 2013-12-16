@@ -2,7 +2,7 @@
 
 leapmotion = source "cylon-leapmotion"
 
-describe "cylon-leapmotion", ->
+describe "Cylon.Leapmotion", ->
   it "should be able to register", ->
     leapmotion.register.should.be.a 'function'
 
