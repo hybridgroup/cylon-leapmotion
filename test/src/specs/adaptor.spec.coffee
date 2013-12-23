@@ -6,6 +6,9 @@ EventEmitter = require('events').EventEmitter
 describe 'Cylon.Adaptors.Leapmotion', ->
   adaptor = new Cylon.Adaptors.LeapMotion initialize: false
 
+  it "creates a Leap Controller when initialized", ->
+    expect(adaptor.leap.parseFrame).to.be.a 'function'
+
   it "provides a 'connect' function", ->
     expect(adaptor.connect).to.be.a 'function'
 

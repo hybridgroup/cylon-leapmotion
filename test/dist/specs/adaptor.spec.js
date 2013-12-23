@@ -11,6 +11,9 @@
     adaptor = new Cylon.Adaptors.LeapMotion({
       initialize: false
     });
+    it("creates a Leap Controller when initialized", function() {
+      return expect(adaptor.leap.parseFrame).to.be.a('function');
+    });
     it("provides a 'connect' function", function() {
       return expect(adaptor.connect).to.be.a('function');
     });
