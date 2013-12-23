@@ -17,7 +17,7 @@ namespace 'Cylon.Adaptors', ->
   class @LeapMotion extends Cylon.Adaptor
     constructor: (opts = {}) ->
       super
-      @connector = @leap = new Leap.Controller
+      @connector = @leap = new Leap.Controller(opts)
 
     connect: (callback) ->
       for event in ['frame', 'hand', 'pointable', 'gesture']

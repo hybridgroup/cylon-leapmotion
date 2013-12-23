@@ -28,7 +28,7 @@
           opts = {};
         }
         LeapMotion.__super__.constructor.apply(this, arguments);
-        this.connector = this.leap = new Leap.Controller;
+        this.connector = this.leap = new Leap.Controller(opts);
       }
 
       LeapMotion.prototype.connect = function(callback) {
