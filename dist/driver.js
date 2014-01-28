@@ -27,6 +27,11 @@
         return _ref;
       }
 
+      # Public: Starts the driver
+      #
+      # callback - params
+      #
+      # Returns null.
       LeapMotion.prototype.start = function(callback) {
         var event, _i, _len, _ref1;
         Logger.info("LeapMotion " + this.device.name + " starting.");

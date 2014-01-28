@@ -15,11 +15,11 @@ require './cylon-leapmotion'
 namespace 'Cylon.Drivers', ->
   class @LeapMotion extends Cylon.Driver
   
-	# Public: Starts the driver
-	#
-	# callback - params
-	#
-	# Returns null.
+  	# Public: Starts the driver
+  	#
+  	# callback - params
+  	#
+  	# Returns null.
     start: (callback) ->
       Logger.info "LeapMotion #{@device.name} starting."
 
