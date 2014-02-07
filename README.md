@@ -76,7 +76,7 @@ Thank you!
 
 ## Release History
 
-[![NPM](https://nodei.co/npm/cylon-leapmotion.png?compact=true)](https://nodei.co/npm/cylon-leapmotion/)
+Version 0.4.0 - Release for cylon 0.10.0
 
 Version 0.3.0 - Release for cylon 0.9.0
 
