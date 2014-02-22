@@ -65,6 +65,10 @@
         }
       }
 
+      Frame.prototype.anyHands = function() {
+        return this.hands.length > 0;
+      };
+
       Frame.prototype.toString = function() {
         return "[Cylon::Leap::Frame id='" + this.id + "' timestamp='" + this.timestamp + "']";
       };
