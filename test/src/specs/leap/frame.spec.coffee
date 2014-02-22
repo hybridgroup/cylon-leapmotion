@@ -67,3 +67,22 @@ describe 'Leap', ->
 
     it "exposes a toString function", ->
       frame.toString.should.be.a 'function'
+
+    describe '#anyHands', ->
+      context "when there are hands in the frame", ->
+        it "returns true", ->
+          expect(frame.anyHands()).to.be.true
+
+      context "when there are no hands in the frame", ->
+        originalHands = null
+
+        before ->
+          originalHands = frame.hands
+          frame.hands = []
+
+        after ->
+          frame.hands = originalHands
+
+        it "returns false", ->
+          frame.hands = []
+          expect(frame.anyHands()).to.be.false

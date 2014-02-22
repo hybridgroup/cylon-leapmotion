@@ -80,8 +80,30 @@
           return gesture.hands[0].should.be.eql(hand);
         });
       });
-      return it("exposes a toString function", function() {
+      it("exposes a toString function", function() {
         return frame.toString.should.be.a('function');
+      });
+      return describe('#anyHands', function() {
+        context("when there are hands in the frame", function() {
+          return it("returns true", function() {
+            return expect(frame.anyHands()).to.be["true"];
+          });
+        });
+        return context("when there are no hands in the frame", function() {
+          var originalHands;
+          originalHands = null;
+          before(function() {
+            originalHands = frame.hands;
+            return frame.hands = [];
+          });
+          after(function() {
+            return frame.hands = originalHands;
+          });
+          return it("returns false", function() {
+            frame.hands = [];
+            return expect(frame.anyHands()).to.be["false"];
+          });
+        });
       });
     });
   });
