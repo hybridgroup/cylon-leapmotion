@@ -1,34 +1,25 @@
-(function() {
-  'use strict';
-  var EventEmitter;
+"use strict";
 
-  source('driver');
+source('driver');
 
-  EventEmitter = require('events').EventEmitter;
+var EventEmitter = require('events').EventEmitter;
 
-  describe('Cylon.Drivers.LeapMotion', function() {
-    var driver;
-    driver = new Cylon.Drivers.LeapMotion({
-      device: new EventEmitter
-    });
-    it("provides a 'start' method", function() {
-      return expect(driver.start).to.be.a('function');
-    });
-    return it("defines driver events when the 'start' method is called", function() {
-      var event, spy, _i, _len, _ref, _results;
-      spy = sinon.spy();
-      driver.defineDriverEvent = spy;
-      driver.start(function() {});
-      _ref = ['frame', 'hand', 'pointable', 'gesture'];
-      _results = [];
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        event = _ref[_i];
-        _results.push(assert(spy.calledWith({
-          eventName: event
-        })));
-      }
-      return _results;
-    });
+describe('Cylon.Drivers.LeapMotion', function() {
+  var driver = new Cylon.Drivers.LeapMotion({ device: new EventEmitter });
+
+  it("provides a 'start' method", function() {
+    expect(driver.start).to.be.a('function');
   });
 
-}).call(this);
+   it("defines driver events when the 'start' method is called", function() {
+    driver.defineDriverEvent = spy();
+    driver.start(function() {});
+
+    var events = ['frame', 'hand', 'pointable', 'gesture'];
+
+    for (var i = 0; i < events.length; i++) {
+      var event = events[i];
+      assert(driver.defineDriverEvent.calledWith({ eventName: event }));
+    }
+  });
+});

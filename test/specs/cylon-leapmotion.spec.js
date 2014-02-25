@@ -1,19 +1,17 @@
-(function() {
-  'use strict';
-  var leapmotion;
+"use strict";
 
-  leapmotion = source("cylon-leapmotion");
+var leapmotion = source("cylon-leapmotion");
 
-  describe("Cylon.Leapmotion", function() {
-    it("should be able to register", function() {
-      return leapmotion.register.should.be.a('function');
-    });
-    it("should be able to create adaptor", function() {
-      return leapmotion.adaptor.should.be.a('function');
-    });
-    return it("should be able to create driver", function() {
-      return leapmotion.driver.should.be.a('function');
-    });
+describe("Cylon.Leapmotion", function() {
+  it("should be able to register", function() {
+    expect(leapmotion.register).to.be.a('function');
   });
 
-}).call(this);
+  it("should be able to create adaptor", function() {
+    expect(leapmotion.adaptor({ initialize: false })).to.be.a('object');
+  });
+
+  it("should be able to create driver", function() {
+    expect(leapmotion.driver({ device: {} })).to.be.a('object');
+  });
+});

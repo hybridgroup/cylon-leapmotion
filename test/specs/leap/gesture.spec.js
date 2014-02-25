@@ -1,55 +1,46 @@
-(function() {
-  "use strict";
-  var gestureJSON;
+"use strict";
 
-  source('leap/frame');
+source('leap/frame');
 
-  gestureJSON = frameJSON.gestures[0];
+var gestureJSON = frameJSON.gestures[0];
 
-  describe('Leap', function() {
-    return describe('Gesture', function() {
-      var gesture;
-      gesture = new Leap.Gesture(gestureJSON);
-      it("extracts the gesture position", function() {
-        var number, _i, _len, _ref, _results;
-        gesture.position.should.be.a('array');
-        _ref = gesture.position;
-        _results = [];
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          number = _ref[_i];
-          _results.push(number.should.be.a('number'));
-        }
-        return _results;
-      });
-      it("extracts the gesture direction", function() {
-        var number, _i, _len, _ref, _results;
-        gesture.direction.should.be.a('array');
-        _ref = gesture.direction;
-        _results = [];
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          number = _ref[_i];
-          _results.push(number.should.be.a('number'));
-        }
-        return _results;
-      });
-      it("extracts the gesture's starting position", function() {
-        var number, _i, _len, _ref, _results;
-        gesture.startPosition.should.be.a('array');
-        _ref = gesture.startPosition;
-        _results = [];
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          number = _ref[_i];
-          _results.push(number.should.be.a('number'));
-        }
-        return _results;
-      });
-      it("extracts the gesture type", function() {
-        return gesture.type.should.be.a('string');
-      });
-      return it("extracts the gesture state", function() {
-        return gesture.state.should.be.a('string');
-      });
+describe('Leap', function() {
+  describe('Gesture', function() {
+    var gesture = new Leap.Gesture(gestureJSON);
+
+    it("extracts the gesture position", function() {
+      expect(gesture.position).to.be.a('array');
+
+      for (var i = 0; i < gesture.position.length; i++) {
+        var number = gesture.position[i];
+        expect(number).to.be.a('number');
+      }
+    });
+
+    it("extracts the gesture direction", function() {
+      expect(gesture.direction).to.be.a('array');
+
+      for (var i = 0; i < gesture.direction.length; i++) {
+        var number = gesture.direction[i];
+        expect(number).to.be.a('number');
+      }
+    });
+
+    it("extracts the gesture's starting position", function() {
+      expect(gesture.startPosition).to.be.a('array');
+
+      for (var i = 0; i < gesture.startPosition.length; i++) {
+        var number = gesture.startPosition[i];
+        expect(number).to.be.a('number');
+      }
+    });
+
+    it("extracts the gesture type", function() {
+      expect(gesture.type).to.be.a('string');
+    });
+
+    it("extracts the gesture state", function() {
+      expect(gesture.state).to.be.a('string');
     });
   });
-
-}).call(this);
+});

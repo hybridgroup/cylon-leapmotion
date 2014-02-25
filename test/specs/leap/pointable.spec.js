@@ -1,36 +1,32 @@
-(function() {
-  "use strict";
-  var pointableJSON;
+"use strict";
 
-  source('leap/frame');
+source('leap/frame');
 
-  pointableJSON = frameJSON.pointables[0];
+var pointableJSON = frameJSON.pointables[0];
 
-  describe('Leap', function() {
-    return describe('Pointable', function() {
-      var pointable;
-      pointable = new Leap.Pointable(pointableJSON);
-      it("extracts the length of the pointable", function() {
-        return pointable.length.should.be.a('number');
-      });
-      it("extracts the position of the tip of the pointable", function() {
-        var number, _i, _len, _ref, _results;
-        pointable.tipPosition.should.be.a('array');
-        _ref = pointable.tipPosition;
-        _results = [];
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          number = _ref[_i];
-          _results.push(number.should.be.a('number'));
-        }
-        return _results;
-      });
-      it("extracts the pointable's touch zone", function() {
-        return pointable.touchZone.should.be.a('string');
-      });
-      return it("extracts whether or not the pointable is a tool", function() {
-        return pointable.tool.should.be.a('boolean');
-      });
+describe('Leap', function() {
+  describe('Pointable', function() {
+    var pointable = new Leap.Pointable(pointableJSON);
+
+    it("extracts the length of the pointable", function() {
+      expect(pointable.length).to.be.a('number');
+    });
+
+    it("extracts the position of the tip of the pointable", function() {
+      expect(pointable.tipPosition).to.be.a('array');
+
+      for (var i = 0; i < pointable.tipPosition.length; i++) {
+        var number = pointable.tipPosition[i];
+        expect(number).to.be.a('number');
+      }
+    });
+
+    it("extracts the pointable's touch zone", function() {
+      expect(pointable.touchZone).to.be.a('string');
+    });
+
+    it("extracts whether or not the pointable is a tool", function() {
+      expect(pointable.tool).to.be.a('boolean');
     });
   });
-
-}).call(this);
+});
