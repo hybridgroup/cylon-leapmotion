@@ -1,10 +1,8 @@
 (function() {
   "use strict";
-  var frameJSON, pointableJSON;
+  var pointableJSON;
 
   source('leap/frame');
-
-  frameJSON = require('../../../support/frame');
 
   pointableJSON = frameJSON.pointables[0];
 

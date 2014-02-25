@@ -1,10 +1,7 @@
 (function() {
   "use strict";
-  var frameJSON;
 
   source('leap/frame');
-
-  frameJSON = require('../../../support/frame');
 
   describe('Leap', function() {
     return describe('Frame', function() {

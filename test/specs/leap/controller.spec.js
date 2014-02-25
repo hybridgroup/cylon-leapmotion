@@ -4,8 +4,6 @@
 
   describe('Leap', function() {
     return describe('Controller', function() {
-      var frameJSON;
-      frameJSON = require('../../../support/frame');
       it('parses Leap Motion API frames', function() {
         var controller, frame;
         controller = new Leap.Controller({

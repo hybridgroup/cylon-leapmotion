@@ -95,7 +95,7 @@ module.exports = function (grunt) {
           'test/support/globals.js',
 
           // tests
-          'test/dist/**/*.spec.js',
+          'test/specs/**/*.spec.js',
         ],
       },
     },

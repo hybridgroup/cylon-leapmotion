@@ -1,10 +1,8 @@
 (function() {
   "use strict";
-  var frameJSON, handJSON;
+  var handJSON;
 
   source('leap/frame');
-
-  frameJSON = require('../../../support/frame');
 
   handJSON = frameJSON.hands[0];
 
