@@ -23,7 +23,7 @@ Hand
 
 ##### Example JSON
 
-    :bash
+    
 
 	  {
 	      "direction": [
@@ -108,7 +108,7 @@ Hand
 
 ##### Example JSON
 
-    :bash
+    
 	  {
 	      "direction": [
 	        -0.647384,
@@ -161,7 +161,7 @@ Pointable
 
 ##### Example JSON
 
-    :bash
+    
 	  {
 	      "direction": [
 	        0.54044,
