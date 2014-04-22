@@ -4,7 +4,11 @@ source('leap/frame');
 
 describe('Leap', function() {
   describe('Frame', function() {
-    var frame = new Leap.Frame(frameJSON);
+    var frame;
+
+    beforeEach(function() {
+      frame = new Leap.Frame(frameJSON);
+    });
 
     it("extracts the frame's ID", function() {
       expect(frame.id).to.be.a('number');
@@ -48,9 +52,15 @@ describe('Leap', function() {
     });
 
     describe('object mappings', function() {
-      var hand = frame.hands[0],
-          gesture = frame.gestures[0],
-          pointables = frame.pointables;
+      var hand, gesture, pointables;
+
+      beforeEach(function() {
+        frame.addObjectRelations();
+
+        hand = frame.hands[0];
+        gesture = frame.gestures[0];
+        pointables = frame.pointables;
+      });
 
       it('allows accessing the gesture from the hand', function() {
         expect(hand.gesture).to.be.eql(gesture);
