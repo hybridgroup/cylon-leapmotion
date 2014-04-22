@@ -9,10 +9,6 @@ Leap Hand contains:
  * position (palm x-y-z coords)
  * wrist rotation (axis,angle,matrix)
 
-### _mapFrameObjects(frame)
-
-Goes through pointables/gestures in the passed Frame, and maps matching objects to the Hand.
-
 ##### Params
 
 -**frame**- parsed Leap Motion frame
@@ -22,8 +18,6 @@ Goes through pointables/gestures in the passed Frame, and maps matching objects 
 Hand
 
 ##### Example JSON
-
-    
 
 	  {
 	      "direction": [
@@ -83,7 +77,7 @@ Hand
 	      ],
 	      "timeVisible": 0.051952
 	    }
-  
+
 
 
 ## gesture
@@ -93,10 +87,6 @@ Gets triggered when doing a gesture motion, makes hand input available.
 Leap Gesture contains:
 
  * Gesture type
-
-### _mapFrameObjects(frame)
-
-Goes through hands/pointables in the passed Frame, and maps matching objects to the Gesture.
 
 ##### Params
 
@@ -108,7 +98,7 @@ Hand
 
 ##### Example JSON
 
-    
+
 	  {
 	      "direction": [
 	        -0.647384,
@@ -144,12 +134,8 @@ Gets triggered when doing a pointable motion, makes hand input available.
 
 Leap Pointable contains:
 
- * length 
- * touch zone 
-
-### _mapFrameObjects(frame)
-
-Goes through hands/gestures in the passed Frame, and maps matching objects to the Pointable.
+ * length
+ * touch zone
 
 ##### Params
 
@@ -161,7 +147,7 @@ Pointable
 
 ##### Example JSON
 
-    
+
 	  {
 	      "direction": [
 	        0.54044,
@@ -195,6 +181,11 @@ Pointable
 ## frame
 
 Gets triggered with every motion detected, makes frame input available.
+
+Call the `addObjectRelations` function on a frame, and you can get relations
+added between frame elements. For example: a `hand` can tell what `pointables`
+it has, as well as what `gestures` it's involved in. These relations work both
+ways.
 
 More data actually available in the frame JSON [https://github.com/hybridgroup/cylon-leapmotion/blob/master/test/support/frame.js](https://github.com/hybridgroup/cylon-leapmotion/blob/master/test/support/frame.js).
 
