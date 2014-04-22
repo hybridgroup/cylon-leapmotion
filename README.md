@@ -78,6 +78,8 @@ Thank you!
 
 ## Release History
 
+Version 0.7.0 - Move object mapping to new `Leap.Frame#addObjectRelations` function
+
 Version 0.6.0 - Release for cylon 0.12.0
 
 Version 0.5.0 - Release for cylon 0.11.0, refactor into pure JavaScript
