@@ -1,11 +1,11 @@
 "use strict";
 
-source('driver');
+var Driver = source('driver');
 
 var EventEmitter = require('events').EventEmitter;
 
 describe('Cylon.Drivers.LeapMotion', function() {
-  var driver = new Cylon.Drivers.LeapMotion({ device: new EventEmitter });
+  var driver = new Driver({ device: new EventEmitter });
 
   it("provides a 'start' method", function() {
     expect(driver.start).to.be.a('function');

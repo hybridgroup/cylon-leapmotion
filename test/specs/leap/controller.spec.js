@@ -1,6 +1,6 @@
 "use strict";
 
-source('leap');
+var Leap = source('leap');
 
 describe('Leap', function() {
   describe('Controller', function() {

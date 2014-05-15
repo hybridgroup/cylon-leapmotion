@@ -1,12 +1,12 @@
 "use strict";
 
-source('leap/frame');
+var Hand = source('leap/hand');
 
 var handJSON = frameJSON.hands[0];
 
 describe('Leap', function() {
   describe('Hand', function() {
-    var hand = new Leap.Hand(handJSON);
+    var hand = new Hand(handJSON);
 
     it("extracts the palm position", function() {
       hand.palmX.should.be.a('number');

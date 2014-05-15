@@ -1,12 +1,12 @@
 "use strict";
 
-source('leap/frame');
+var Gesture = source('leap/gesture');
 
 var gestureJSON = frameJSON.gestures[0];
 
 describe('Leap', function() {
   describe('Gesture', function() {
-    var gesture = new Leap.Gesture(gestureJSON);
+    var gesture = new Gesture(gestureJSON);
 
     it("extracts the gesture position", function() {
       expect(gesture.position).to.be.a('array');

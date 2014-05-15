@@ -1,11 +1,11 @@
 "use strict";
 
-source('adaptor');
+var Adaptor = source('adaptor');
 
 var EventEmitter = require('events').EventEmitter;
 
 describe('Cylon.Adaptors.Leapmotion', function() {
-  var adaptor = new Cylon.Adaptors.LeapMotion({ initialize: false });
+  var adaptor = new Adaptor({ initialize: false });
 
   it("creates a Leap Controller when initialized", function() {
     expect(adaptor.leap.parseFrame).to.be.a('function');

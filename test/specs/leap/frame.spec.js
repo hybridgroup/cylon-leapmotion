@@ -1,13 +1,13 @@
 "use strict";
 
-source('leap/frame');
+var Frame = source('leap/frame');
 
 describe('Leap', function() {
   describe('Frame', function() {
     var frame;
 
     beforeEach(function() {
-      frame = new Leap.Frame(frameJSON);
+      frame = new Frame(frameJSON);
     });
 
     it("extracts the frame's ID", function() {
