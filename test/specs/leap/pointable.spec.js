@@ -1,12 +1,12 @@
 "use strict";
 
-source('leap/frame');
+var Pointable = source('leap/pointable');
 
 var pointableJSON = frameJSON.pointables[0];
 
 describe('Leap', function() {
   describe('Pointable', function() {
-    var pointable = new Leap.Pointable(pointableJSON);
+    var pointable = new Pointable(pointableJSON);
 
     it("extracts the length of the pointable", function() {
       expect(pointable.length).to.be.a('number');
