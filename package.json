@@ -1,6 +1,6 @@
 {
   "name": "cylon-leapmotion",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "main": "lib/cylon-leapmotion.js",
   "description": "Cylon module for the Leap Motion",
   "homepage": "http://cylonjs.com",
@@ -24,7 +24,7 @@
   },
 
   "dependencies": {
-    "cylon":          ">= 0.12.0",
-    "ws":             "~0.4.31"
+    "cylon": "~0.14.0",
+    "ws":    "~0.4.31"
   }
 }
