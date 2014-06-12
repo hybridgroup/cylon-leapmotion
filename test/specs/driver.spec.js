@@ -15,11 +15,11 @@ describe('Cylon.Drivers.LeapMotion', function() {
     driver.defineDriverEvent = spy();
     driver.start(function() {});
 
-    var events = ['frame', 'hand', 'pointable', 'gesture'];
+    var events = ['frame', 'hand'];
 
     for (var i = 0; i < events.length; i++) {
       var event = events[i];
-      assert(driver.defineDriverEvent.calledWith({ eventName: event }));
+      assert(driver.defineDriverEvent.calledWith(event));
     }
   });
 });
