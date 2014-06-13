@@ -6,7 +6,7 @@ Cylon.robot({
 
   work: function(my) {
     my.leapmotion.on('hand', function(hand) {
-      console.log(hand.palmX + "," + hand.palmY + "," + hand.palmZ);
+      console.log(hand.palmPosition.join(','));
     });
   }
 }).start();

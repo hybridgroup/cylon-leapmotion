@@ -20,8 +20,6 @@ global.sinon = require('sinon');
 global.spy = sinon.spy
 global.stub = sinon.stub
 
-global.frameJSON = require('./frame')
-
 // can be used by test modules to require production modules,
 // relative to the base path (where the Gruntfile.js also lives)
 global.source = function (src) {

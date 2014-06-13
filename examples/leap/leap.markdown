@@ -21,28 +21,12 @@ Easy as can be. For our work, we're going to log a simplified version of the
 data we get from the device.
 
       work: function(my) {
-        my.leapmotion.on('connect', function() {
-          console.log("Connected to Leap Motion.");
-        });
-
-        my.leapmotion.on('start', function() {
-          console.log("Leap Motion has started.");
-        });
-
         my.leapmotion.on('frame', function(frame) {
           console.log(frame.toString());
         });
 
         my.leapmotion.on('hand', function(hand) {
           console.log(hand.toString());
-        });
-
-        my.leapmotion.on('pointable', function(pointable) {
-          console.log(pointable.toString());
-        });
-
-        my.leapmotion.on('gesture', function(gesture) {
-          console.log(gesture.toString());
         });
       }
 
