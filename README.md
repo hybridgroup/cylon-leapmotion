@@ -42,20 +42,6 @@ Cylon.robot({
 
 ```
 
-```coffee-script
-Cylon = require 'cylon'
-
-Cylon.robot
-  connection: { name: 'leapmotion', adaptor: 'leapmotion', port: '127.0.0.1:6437' }
-  device: { name: 'leapmotion', driver: 'leapmotion' }
-
-  work: (my) ->
-    my.leapmotion.on 'hand', (payload) ->
-      Logger.info payload.toString()
-
-.start()
-```
-
 ## Documentation
 
 We're busy adding documentation to [cylonjs.com](http://cylonjs.com). Please check there as we continue to work on Cylon.js.
