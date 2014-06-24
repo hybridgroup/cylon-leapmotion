@@ -2,16 +2,41 @@
 
 var Adaptor = source('adaptor');
 
-var EventEmitter = require('events').EventEmitter;
+var Cylon = require('cylon'),
+    Leap = require('leapjs');
 
-describe('Cylon.Adaptors.Leapmotion', function() {
-  var adaptor = new Adaptor({ initialize: false });
+describe('Adaptor', function() {
+  var adaptor = new Adaptor();
 
-  it("provides a 'connect' function", function() {
-    expect(adaptor.connect).to.be.a('function');
+  it("subclasses Cylon.Adaptor", function() {
+    expect(adaptor).to.be.an.instanceOf(Cylon.Adaptor);
+    expect(adaptor).to.be.an.instanceOf(Adaptor);
   });
 
-  it("provides a 'disconnect' function", function() {
-    expect(adaptor.disconnect).to.be.a('function');
+  describe("#connect", function() {
+    var conn, handlers
+
+    beforeEach(function() {
+      conn = adaptor.connection = { emit: spy() };
+
+      stub(Leap, 'loop');
+      adaptor.connect(function() {});
+
+      handlers = Leap.loop.args[0][0];
+    });
+
+    afterEach(function() {
+      Leap.loop.restore();
+    });
+
+    it("attaches a frame function to the LeapMotion event loop", function() {
+      handlers.frame('frame');
+      expect(conn.emit).to.be.calledWith('frame', 'frame');
+    });
+
+    it("attaches a hand function to the LeapMotion event loop", function() {
+      handlers.hand('hand');
+      expect(conn.emit).to.be.calledWith('hand', 'hand');
+    });
   });
 });

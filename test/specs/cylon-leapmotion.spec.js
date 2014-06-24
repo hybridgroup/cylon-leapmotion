@@ -2,16 +2,40 @@
 
 var module = source("cylon-leapmotion");
 
+var Adaptor = source('adaptor'),
+    Driver = source('driver');
+
 describe("Cylon.Leapmotion", function() {
-  it("should be able to register", function() {
-    expect(module.register).to.be.a('function');
+  describe("#register", function() {
+    var robot, adaptor, driver;
+
+    beforeEach(function() {
+      robot = { registerAdaptor: spy(), registerDriver: spy() };
+
+      adaptor = robot.registerAdaptor;
+      driver = robot.registerDriver;
+
+      module.register(robot);
+    });
+
+    it("registers the LeapMotion adaptor", function() {
+      expect(adaptor).to.be.calledWith('cylon-leapmotion', 'leapmotion');
+    });
+
+    it("registers the LeapMotion driver", function() {
+      expect(driver).to.be.calledWith('cylon-leapmotion', 'leapmotion');
+    });
   });
 
-  it("should be able to create adaptor", function() {
-    expect(module.adaptor({ initialize: false })).to.be.a('object');
+  describe("#adaptor", function() {
+    it("returns a new instance of the LeapMotion adaptor", function() {
+      expect(module.adaptor()).to.be.an.instanceOf(Adaptor);
+    });
   });
 
-  it("should be able to create driver", function() {
-    expect(module.driver({ device: {} })).to.be.a('object');
+  describe("#driver", function() {
+    it("returns a new instance of the LeapMotion driver", function() {
+      expect(module.driver({ device: {} })).to.be.an.instanceOf(Driver);
+    });
   });
 });

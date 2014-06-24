@@ -2,24 +2,31 @@
 
 var Driver = source('driver');
 
+var Cylon = require('cylon');
+
 var EventEmitter = require('events').EventEmitter;
 
 describe('Cylon.Drivers.LeapMotion', function() {
   var driver = new Driver({ device: new EventEmitter });
 
-  it("provides a 'start' method", function() {
-    expect(driver.start).to.be.a('function');
+  it('subclasses Cylon.Driver', function() {
+    expect(driver).to.be.an.instanceOf(Cylon.Driver);
+    expect(driver).to.be.an.instanceOf(Driver);
   });
 
-   it("defines driver events when the 'start' method is called", function() {
-    driver.defineDriverEvent = spy();
-    driver.start(function() {});
+  describe("#start", function() {
+    beforeEach(function() {
+      stub(driver, 'defineDriverEvent');
+      driver.start(function() { });
+    });
 
-    var events = ['frame', 'hand'];
+    afterEach(function() {
+      driver.defineDriverEvent.restore();
+    });
 
-    for (var i = 0; i < events.length; i++) {
-      var event = events[i];
-      assert(driver.defineDriverEvent.calledWith(event));
-    }
+    it("defines driver events", function() {
+      expect(driver.defineDriverEvent).to.be.calledWith('frame');
+      expect(driver.defineDriverEvent).to.be.calledWith('hand');
+    });
   });
 });
