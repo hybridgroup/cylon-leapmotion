@@ -34,6 +34,15 @@ describe('Adaptor', function() {
       expect(conn.emit).to.be.calledWith('frame', 'frame');
     });
 
+    it("emits gestures if they occur", function() {
+      var gesture1 = {}, gesture2 = {};
+
+      handlers.frame({ gestures: [gesture1, gesture2] });
+
+      expect(conn.emit).to.be.calledWith('gesture', gesture1);
+      expect(conn.emit).to.be.calledWith('gesture', gesture2);
+    });
+
     it("attaches a hand function to the LeapMotion event loop", function() {
       handlers.hand('hand');
       expect(conn.emit).to.be.calledWith('hand', 'hand');

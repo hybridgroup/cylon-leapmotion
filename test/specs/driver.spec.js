@@ -27,6 +27,7 @@ describe('Cylon.Drivers.LeapMotion', function() {
     it("defines driver events", function() {
       expect(driver.defineDriverEvent).to.be.calledWith('frame');
       expect(driver.defineDriverEvent).to.be.calledWith('hand');
+      expect(driver.defineDriverEvent).to.be.calledWith('gesture');
     });
   });
 });
