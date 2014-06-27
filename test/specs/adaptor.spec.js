@@ -38,5 +38,26 @@ describe('Adaptor', function() {
       handlers.hand('hand');
       expect(conn.emit).to.be.calledWith('hand', 'hand');
     });
+
+    it("adds palm position accessors to the hand", function() {
+      var parsed = {
+        palmPosition: [ 0, 1, 2 ],
+        _rotation: [ 0, 1, 2 ],
+
+        palmX: 0,
+        palmY: 1,
+        palmZ: 2,
+
+        rotation: {
+          axis: 0,
+          angle: 1,
+          matrix: 2
+        }
+      }
+
+      handlers.hand({ palmPosition: [ 0, 1, 2 ], _rotation: [ 0, 1, 2 ] });
+
+      expect(conn.emit).to.be.calledWith('hand', parsed);
+    })
   });
 });
