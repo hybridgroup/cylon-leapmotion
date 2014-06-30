@@ -64,6 +64,8 @@ Thank you!
 
 ## Release History
 
+Version 0.10.0 - Add back 'gesture' event, tweaked 'hand' objects.
+
 Version 0.9.0 - Compatibility with Cylon 0.15.0, use LeapJS instead of custom implementation
 
 Version 0.8.0 - Compatibility with Cylon 0.14.0, remove node-namespace.
