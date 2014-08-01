@@ -15,7 +15,7 @@ bdd:
 	@$(BIN)/mocha -r cylon --colors -R spec $(TEST_FILES)
 
 cover:
-	@istanbul cover $(BIN)/_mocha $(TEST_FILES) -- -R spec
+	@istanbul cover $(BIN)/_mocha $(TEST_FILES) --report lcovonly -- -R spec
 
 # Run JSHint
 lint:
