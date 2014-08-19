@@ -64,6 +64,8 @@ Thank you!
 
 ## Release History
 
+Version 0.12.0 - Compatibility with Cylon 0.18.0
+
 Version 0.11.0 - Compatibility with Cylon 0.16.0, add peerDependencies
 
 Version 0.10.0 - Add back 'gesture' event, tweaked 'hand' objects.
