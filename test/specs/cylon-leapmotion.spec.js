@@ -35,7 +35,7 @@ describe("Cylon.Leapmotion", function() {
 
   describe("#driver", function() {
     it("returns a new instance of the LeapMotion driver", function() {
-      expect(module.driver({ device: {} })).to.be.an.instanceOf(Driver);
+      expect(module.driver({ device: { connection: {} } })).to.be.an.instanceOf(Driver);
     });
   });
 });

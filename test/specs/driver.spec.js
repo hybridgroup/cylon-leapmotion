@@ -7,7 +7,7 @@ var Cylon = require('cylon');
 var EventEmitter = require('events').EventEmitter;
 
 describe('Cylon.Drivers.LeapMotion', function() {
-  var driver = new Driver({ device: new EventEmitter });
+  var driver = new Driver({ device: { connection: {} } });
 
   it('subclasses Cylon.Driver', function() {
     expect(driver).to.be.an.instanceOf(Cylon.Driver);
