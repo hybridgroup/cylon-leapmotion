@@ -8,6 +8,8 @@ This module provides an adaptor and driver for the Leap Motion (https://www.leap
 
 Want to use Ruby on robots? Check out our sister project [Artoo](http://artoo.io).
 
+[![Build Status](https://secure.travis-ci.org/hybridgroup/cylon-leapmotion.png?branch=master)](http://travis-ci.org/hybridgroup/cylon-leapmotion) [![Code Climate](https://codeclimate.com/github/hybridgroup/cylon-leapmotion/badges/gpa.svg)](https://codeclimate.com/github/hybridgroup/cylon-leapmotion) [![Test Coverage](https://codeclimate.com/github/hybridgroup/cylon-leapmotion/badges/coverage.svg)](https://codeclimate.com/github/hybridgroup/cylon-leapmotion)
+
 ## Getting Started
 
 Install the module via NPM:
