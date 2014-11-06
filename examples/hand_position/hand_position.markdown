@@ -14,7 +14,7 @@ With that done, let's begin defining our robot:
 As in the basic Leap example, we have a single conncetion + device pair, talking
 to the Leap Motion over WebSockets.
 
-      connection: { name: 'leapmotion', adaptor: 'leapmotion', port: '127.0.0.1:6437' },
+      connection: { name: 'leapmotion', adaptor: 'leapmotion' },
       device: { name: 'leapmotion', driver: 'leapmotion' },
 
 With our connections defined, we can get into the meat of this example. For the

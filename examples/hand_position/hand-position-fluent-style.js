@@ -1,7 +1,7 @@
 var cylon = require('cylon');
 
 cylon.robot({
-  connection: { name: 'leapmotion', adaptor: 'leapmotion', port: '127.0.0.1:6437' },
+  connection: { name: 'leapmotion', adaptor: 'leapmotion' },
   device: { name: 'leapmotion', driver: 'leapmotion' }
 })
 
