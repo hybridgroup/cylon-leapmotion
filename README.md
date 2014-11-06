@@ -20,6 +20,7 @@ In order to use this module , you need to install the drivers/software from the 
 
 ## Examples
 
+**Basic:**
 ```javascript
 var Cylon = require('cylon');
 
@@ -30,6 +31,22 @@ Cylon.robot({
   work: function(my) {
     my.leapmotion.on('hand', function(payload) {
       Logger.info(payload.toString());
+    });
+  }
+}).start();
+```
+
+**Hand Position, Leap Motion on another computer:**
+```javascript
+var Cylon = require('cylon');
+
+Cylon.robot({
+  connection: { name: 'leapmotion', adaptor: 'leapmotion', host: '192.168.1.64' },
+  device: { name: 'leapmotion', driver: 'leapmotion' },
+
+  work: function(my) {
+    my.leapmotion.on('hand', function(hand) {
+      console.log(hand.palmPosition.join(','));
     });
   }
 }).start();
@@ -56,6 +73,8 @@ Thank you!
   * For git help see [progit](http://git-scm.com/book) which is an awesome (and free) book on git
 
 ## Release History
+
+Version 0.15.0 - Re-support connecting to Leap Motion on other IP addresses
 
 Version 0.14.0 - Compatibility with Cylon 0.20.0
 
