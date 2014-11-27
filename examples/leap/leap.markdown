@@ -14,8 +14,13 @@ With that done, we can start defining our robot:
 We have a single connection + device combo for this bot, which will connect to
 the Leap Motion using the `leapd` daemon over WebSockets.
 
-      connection: { name: 'leapmotion', adaptor: 'leapmotion' },
-      device: { name: 'leapmotion', driver: 'leapmotion' },
+      connections: {
+        leapmotion: { adaptor: 'leapmotion' }
+      },
+
+      devices: {
+        leapmotion: { driver: 'leapmotion' }
+      },
 
 Easy as can be. For our work, we're going to log a simplified version of the
 data we get from the device.

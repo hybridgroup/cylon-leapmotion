@@ -25,8 +25,13 @@ In order to use this module , you need to install the drivers/software from the 
 var Cylon = require('cylon');
 
 Cylon.robot({
-  connection: { name: 'leapmotion', adaptor: 'leapmotion' },
-  device: { name: 'leapmotion', driver: 'leapmotion' },
+  connections: {
+    leapmotion: { adaptor: 'leapmotion' }
+  },
+
+  devices: {
+    leapmotion: { driver: 'leapmotion' }
+  },
 
   work: function(my) {
     my.leapmotion.on('hand', function(payload) {
@@ -41,8 +46,13 @@ Cylon.robot({
 var Cylon = require('cylon');
 
 Cylon.robot({
-  connection: { name: 'leapmotion', adaptor: 'leapmotion', host: '192.168.1.64' },
-  device: { name: 'leapmotion', driver: 'leapmotion' },
+  connections: {
+    leapmotion: { adaptor: 'leapmotion', host: '192.168.1.64' }
+  },
+
+  devices: {
+    leapmotion: { driver: 'leapmotion' }
+  },
 
   work: function(my) {
     my.leapmotion.on('hand', function(hand) {
