@@ -16,7 +16,11 @@ Install the module via NPM:
 
     npm install cylon-leapmotion
 
-In order to use this module , you need to install the drivers/software from the Leapmotion site [https://www.leapmotion.com/setup](https://www.leapmotion.com/setup), make sure that is installed before use the commands and events.
+In order to use this module, you need to install the Leap Motion driver/SDK from the [Leap Motion site](https://www.leapmotion.com/setup).
+
+Inside Leap Motion's setup, ensure "Allow Web Apps" and "Allow Background Apps" are both checked.
+
+![](http://i.imgur.com/3Mjsiwn.jpg)
 
 ## Examples
 
