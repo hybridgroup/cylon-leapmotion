@@ -10,7 +10,7 @@ Want to use Ruby on robots? Check out our sister project [Artoo](http://artoo.io
 
 [![Build Status](https://secure.travis-ci.org/hybridgroup/cylon-leapmotion.png?branch=master)](http://travis-ci.org/hybridgroup/cylon-leapmotion) [![Code Climate](https://codeclimate.com/github/hybridgroup/cylon-leapmotion/badges/gpa.svg)](https://codeclimate.com/github/hybridgroup/cylon-leapmotion) [![Test Coverage](https://codeclimate.com/github/hybridgroup/cylon-leapmotion/badges/coverage.svg)](https://codeclimate.com/github/hybridgroup/cylon-leapmotion)
 
-## Getting Started
+## How to Install
 
 Install the module via NPM:
 
@@ -20,11 +20,12 @@ In order to use this module, you need to install the Leap Motion driver/SDK from
 
 Inside Leap Motion's setup, ensure "Allow Web Apps" and "Allow Background Apps" are both checked.
 
-![](http://i.imgur.com/3Mjsiwn.jpg)
+<img src="http://i.imgur.com/3Mjsiwn.jpg" style="width: 100%">
 
-## Examples
+## How to Use
 
-**Basic:**
+This basic program uses a Leap Motion to detect the user's hand position:
+
 ```javascript
 var Cylon = require('cylon');
 
@@ -45,25 +46,31 @@ Cylon.robot({
 }).start();
 ```
 
-**Hand Position, Leap Motion on another computer:**
+## How to Connect
+
+### OS X
+
+Our driver works out-of-the-box with the vanilla installation of the [Leap Motion software](https://www.leapmotion.com/setup).
+
+### Ubuntu
+
+The Linux download of the Leap Motion software can be obtained from the [Leap Motion Dev Center](https://developer.leapmotion.com/downloads).
+
+To make sure everything's working:
+
+- Run the leapd daemon to open a websocket connection in port 6437.
+- Connect your computer and the Leap Motion controller
+- Connect to the device via Cylon.js
+
+### Connecting To Another Machine
+
+By default, `cylon-leapmotion` attempts to connect to the LeapMotion websocket server running on localhost.
+You can, however, provide it with another IP in the `connection` object and it'll attempt to connect to that instead:
+
 ```javascript
-var Cylon = require('cylon');
-
-Cylon.robot({
-  connections: {
-    leapmotion: { adaptor: 'leapmotion', host: '192.168.1.64' }
-  },
-
-  devices: {
-    leapmotion: { driver: 'leapmotion' }
-  },
-
-  work: function(my) {
-    my.leapmotion.on('hand', function(hand) {
-      console.log(hand.palmPosition.join(','));
-    });
-  }
-}).start();
+connections: {
+  leapmotion: { adaptor: 'leapmotion', host: '192.168.1.64' }
+}
 ```
 
 ## Documentation
