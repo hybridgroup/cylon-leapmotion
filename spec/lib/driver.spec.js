@@ -1,22 +1,21 @@
+/* jshint expr:true */
 "use strict";
 
-var Driver = source('driver');
+var Driver = source("driver");
 
-var Cylon = require('cylon');
+var Cylon = require("cylon");
 
-var EventEmitter = require('events').EventEmitter;
-
-describe('Cylon.Drivers.LeapMotion', function() {
+describe("Cylon.Drivers.LeapMotion", function() {
   var driver = new Driver({ device: { connection: {} } });
 
-  it('subclasses Cylon.Driver', function() {
+  it("subclasses Cylon.Driver", function() {
     expect(driver).to.be.an.instanceOf(Cylon.Driver);
     expect(driver).to.be.an.instanceOf(Driver);
   });
 
   describe("#start", function() {
     beforeEach(function() {
-      stub(driver, 'defineDriverEvent');
+      stub(driver, "defineDriverEvent");
       driver.start(function() { });
     });
 
@@ -25,9 +24,9 @@ describe('Cylon.Drivers.LeapMotion', function() {
     });
 
     it("defines driver events", function() {
-      expect(driver.defineDriverEvent).to.be.calledWith('frame');
-      expect(driver.defineDriverEvent).to.be.calledWith('hand');
-      expect(driver.defineDriverEvent).to.be.calledWith('gesture');
+      expect(driver.defineDriverEvent).to.be.calledWith("frame");
+      expect(driver.defineDriverEvent).to.be.calledWith("hand");
+      expect(driver.defineDriverEvent).to.be.calledWith("gesture");
     });
   });
 });
