@@ -14,7 +14,7 @@ Want to use Ruby on robots? Check out our sister project [Artoo](http://artoo.io
 
 Install the module via NPM:
 
-    npm install cylon-leapmotion
+    npm install cylon cylon-leapmotion
 
 In order to use this module, you need to install the Leap Motion driver/SDK from the [Leap Motion site](https://www.leapmotion.com/setup).
 
