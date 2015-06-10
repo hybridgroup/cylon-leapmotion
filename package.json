@@ -13,7 +13,21 @@
     "url": "https://github.com/hybridgroup/cylon-leapmotion"
   },
 
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
+
+  "keywords": [
+    "cylon",
+    "cylonjs",
+    "cylons",
+    "robot",
+    "robots",
+    "robotics",
+    "iot",
+    "hardware",
+    "leap",
+    "leap motion",
+    "leapmotion"
+  ],
 
   "devDependencies": {
     "sinon-chai": "~2.4.0",
