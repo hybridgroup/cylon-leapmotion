@@ -1,10 +1,9 @@
-/* jshint expr:true */
 "use strict";
 
-var leapmotion = source("cylon-leapmotion");
+var leapmotion = lib("cylon-leapmotion");
 
-var Adaptor = source("adaptor"),
-    Driver = source("driver");
+var Adaptor = lib("adaptor"),
+    Driver = lib("driver");
 
 describe("Cylon.Leapmotion", function() {
   describe("#adaptors", function() {
