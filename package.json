@@ -1,7 +1,6 @@
 {
   "name": "cylon-leapmotion",
   "version": "0.18.0",
-  "main": "lib/cylon-leapmotion.js",
   "description": "Cylon module for the Leap Motion",
   "homepage": "http://cylonjs.com",
   "bugs": "https://github.com/hybridgroup/cylon-leapmotion/issues",

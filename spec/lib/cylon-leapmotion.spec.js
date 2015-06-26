@@ -1,6 +1,6 @@
 "use strict";
 
-var leapmotion = lib("cylon-leapmotion");
+var leapmotion = lib("../");
 
 var Adaptor = lib("adaptor"),
     Driver = lib("driver");
