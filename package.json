@@ -29,15 +29,15 @@
   ],
 
   "devDependencies": {
-    "sinon-chai": "~2.4.0",
-    "chai":       "~1.7.2",
-    "mocha":      "~1.12.1",
-    "sinon":      "~1.7.3",
-    "eslint":     "0.22.1"
+    "sinon-chai": "~2.8.0",
+    "chai":       "~3.0.0",
+    "mocha":      "~2.2.5",
+    "sinon":      "~1.15.4",
+    "eslint":     "~0.24.0"
   },
 
   "dependencies": {
     "cylon":  "~1.1.0",
-    "leapjs": "~0.6.2"
+    "leapjs": "~0.6.4"
   }
 }
